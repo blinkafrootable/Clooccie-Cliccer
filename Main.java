@@ -35,7 +35,7 @@ public class Main extends Applet implements ActionListener, ItemListener {
 
     @Override
     public void init() {
-        clooccies = 1000000000L;
+        clooccies = 10000000000L;
         appletWidth = 1280; appletHeight = 720;
         super.resize(appletWidth, appletHeight);
         super.setLayout(null);
@@ -65,7 +65,7 @@ public class Main extends Applet implements ActionListener, ItemListener {
         DecimalFormat formatter = new DecimalFormat("###,###.###");
         bgg.drawString(formatter.format(clooccies) + " clooccies", 50, 100);
         bgg.setFont(new Font("arial", Font.BOLD, 20));
-        bgg.drawString("Clooccies/sec: " + Math.round(cloocciesPerSecond * 100.0) / 100.0, 50, 125);
+        bgg.drawString("Clooccies/sec: " + formatter.format(Math.round(cloocciesPerSecond * 100.0) / 100.0), 50, 125);
 
         bgg.setFont(new Font("arial", Font.BOLD, 32));
         bgg.drawString("# Owned:", 525, 100);
@@ -91,7 +91,7 @@ public class Main extends Applet implements ActionListener, ItemListener {
             if (source == buyButtons[i] && clooccies >= generatorCost[i]) {
                 generatorCounts[i]++;
                 clooccies -= generatorCost[i];
-                generatorCost[i] = (int) Math.round(generatorBaseCost[i] * Math.pow(1.15, generatorCounts[i]));
+                generatorCost[i] = Math.round(generatorBaseCost[i] * Math.pow(1.15, generatorCounts[i]));
                 if (!generatorTimers[i].isRunning()) //start the timer if it hasn't started already
                     generatorTimers[i].start();
                 if (buyButtons.length-1 != i) {
