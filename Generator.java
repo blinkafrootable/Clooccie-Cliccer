@@ -1,7 +1,6 @@
-package com.blinakfrootable.clicc;
+package clicc;
 
 import javax.swing.*;
-import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -23,6 +22,10 @@ class Generator extends Button {
 
     public void addCount() {
         this.count++;
+    }
+    
+    public void setCount(int count) {
+    	this.count = count;
     }
 
     public void setCost(long cost) {
